@@ -1,0 +1,11 @@
+name: "Build Project"
+description: "Builds TS and App"
+runs:
+    using: "composite"
+    steps:
+        - name: Install Dependencies in App
+          run: yarn
+          shell: bash
+        - name: Build App TypeScript
+          run: yarn build
+          shell: bash

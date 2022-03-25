@@ -1,0 +1,20 @@
+name: Build API
+
+on:
+    pull_request:
+        branches:
+            - master # Master for now until we have development branch
+
+jobs:
+    build:
+        timeout-minutes: 10
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+
+        steps:
+            - name: Checkout Branch
+              uses: actions/checkout@v2
+            - name: Build Project
+              uses: ./.github/actions
