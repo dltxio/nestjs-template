@@ -9,8 +9,13 @@ export class EventStoreService implements IEventStoreService {
         console.log(var1);
     }
 
-    public async append(name: string, event: IEvent) {
-        // TODO
-        console.log(name + event);
+    public getAll() {
+        return ["1", "2", "3"];
+    }
+    
+    public getById(id: string) {
+        // dummy impl
+        console.log(id);
+        return id;
     }
 }

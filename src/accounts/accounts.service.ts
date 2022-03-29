@@ -10,12 +10,11 @@ export class AccountsService {
 
     // Get a list of accounts
     public async getAll(): Promise<any> {
-        // TODO
+        return await this.eventStore.getAll();
     }
 
     // Get an account
     public async getById(id: string): Promise<any> {
-        // TODO
-        console.log(id);
+        return await this.eventStore.getById(id);
     }
 }

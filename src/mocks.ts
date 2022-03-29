@@ -1,16 +1,12 @@
-import { IEvent, IEventStoreEvent, IEventStoreService } from "./interfaces";
+import { IEvent, IEventStoreService } from "./interfaces";
 
 export class MockEventStoreService implements IEventStoreService {
-    private streams: { [key: string]: IEventStoreEvent[] } = {};
-    public append(name: string, event: IEvent): Promise<void> {
-        if (!this.streams[name]) {
-            this.streams[name] = [];
-        }
-        this.streams[name].push({
-            data: event.data,
-            type: event.type
-        } as IEventStoreEvent);
-        return Promise.resolve();
+    public getById(id: string): string {
+        return "mock" + id;
+    }
+
+    public getAll(): string[] {
+        return ["mock1", "mock2", "mock3"];
     }
 }
 

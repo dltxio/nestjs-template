@@ -35,10 +35,10 @@ describe("AccountService", () => {
 
     describe("Creating a vault account", () => {
         it("should call the createVaultAccount method", async () => {
-            const accountName = "myAccount";
-            jest.spyOn(eventStore, "append").mockResolvedValue();
-            await service.getById(accountName);
-            expect(eventStore.append).toBeCalledWith(accountName);
+            const myId = "1";
+            //jest.spyOn(eventStore, "getById").mockResolvedValue(myId);
+            await service.getById(myId);
+            expect(eventStore.getById).toBeCalledWith(myId);
         });
     });
 });

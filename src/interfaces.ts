@@ -45,7 +45,8 @@ export interface IAccountsService {
 }
 
 export interface IEventStoreService {
-    append(name: string, event: IEvent): Promise<void>;
+    getById(id: string): string;
+    getAll(): string[];
 }
 
 export interface IEventStoreEvent {
