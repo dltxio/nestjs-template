@@ -2,12 +2,12 @@
 Template for Back End repos using NodeJS and Typescript
 
 ## Technology
-- [NodeJs](https://nodejs.org/en/)
+- [NodeJs](https://nodejs.org/en/) -\
 Recommend installing Node Version Manager (NVM) to allow using multiple versions of Node on your machine. [Instructions for Windows](https://dev.to/skaytech/how-to-install-node-version-manager-nvm-for-windows-10-4nbi)\
 We use Long Term Support (LTS) [versions](https://nodejs.org/en/about/releases/) of Node so that our apps are stable\
 Starting point of a Nodejs project is `./package.json`
 
-- [Typescript](https://www.typescriptlang.org/) The programming language of choice, compiles down to JavaScript. Refer to `./tsconfig.json` for the compilation options
+- [Typescript](https://www.typescriptlang.org/) - The programming language of choice, compiles down to JavaScript. Refer to `./tsconfig.json` for the compilation options
 - [Yarn](https://yarnpkg.com/) - We use Yarn (over npm) as the package manager. Windows installation instructions [here](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable), requires npm installed
 - [NestJS](https://nestjs.com/) - This app uses Nest as a (NodeJS) framework.
 - [Es-lint](https://eslint.org/) and [prettier](https://prettier.io/) - Code linting and formatting standards
@@ -47,19 +47,24 @@ This project contains a single entity `accounts` for demo purposes.\
 All related files are stored under the `src/accounts` folder. Simply create copies of this folder for other entities you wish to create
 
 // Get all (vault) accounts
-GET accounts
+> GET accounts
 
 // Get a (vault) account
-GET accounts/:accountId
+> GET accounts/:accountId
 
 ### Sample external service
 This project contains a single external service `EventStore` for demo purposes and is found under `services/EventStore.service.ts`
 
 ## Standards
+- [Service Oriented Architecture (SoA)](https://www.geeksforgeeks.org/service-oriented-architecture/)
 - [Inversion of Control / Dependency Injection](https://martinfowler.com/articles/injection.html)
 - Unit and Integration/E2E testing
 - Swagger documentation via annotations
 - TODO
+
+### Dependency Management
+- Dependencies vs dev-dependencies - if it's not used at run-time then add as a dev-dependency
+- Major vs minor version upgrades - don't upgrade major versions unless you know what you're doing. There are often breaking changes
 
 ## Commands
 More details in the scripts section of `./package.json`
