@@ -28,6 +28,7 @@ src/
     utils/ - common reusable components e.g. Nest validators and interceptors
     app.module.ts - entry point to the Nest app that defines the dependency injections
     interfacts.ts - global file of TS interfaces
+    main.ts - nest setup including swagger config
     mocks.ts - mocked external classes used in tests
 test/ - contains end to end tests
 ```
