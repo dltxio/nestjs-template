@@ -1,45 +1,50 @@
 # NestJS ![build](https://github.com/dltxio/nextjs-template/actions/workflows/build-project.yml/badge.svg)
-Template for Back End repos
+Template for Back End repos using NodeJS and Typescript
 
-## NestJS
+## Technology
+- [NodeJs](https://nodejs.org/en/)
+Recommend installing Node Version Manager (NVM) to allow using multiple versions of Node on your machine. [Instructions for Windows](https://dev.to/skaytech/how-to-install-node-version-manager-nvm-for-windows-10-4nbi)\
+We use Long Term Support (LTS) [versions](https://nodejs.org/en/about/releases/) of Node so that our apps are stable\
+Starting point of a Nodejs project is `./package.json`
 
-This app uses [NestJS](https://nestjs.com/) as a (NodeJS) framework.
+- [Typescript](https://www.typescriptlang.org/) The programming language of choice, compiles down to JavaScript. Refer to `./tsconfig.json` for the compilation options
+- [Yarn](https://yarnpkg.com/) - We use Yarn (over npm) as the package manager. Windows installation instructions [here](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable), requires npm installed
+- [NestJS](https://nestjs.com/) - This app uses Nest as a (NodeJS) framework.
+- [Es-lint](https://eslint.org/) and [prettier](https://prettier.io/) - Code linting and formatting standards
+- [Jest](https://jestjs.io/) - Testing framework - TODO remove
+- [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) - Testing and Assertion frameworks for unit testing
+- [Supertest](https://github.com/visionmedia/supertest) - Integration/End-to-End (e2e) testing framework for HTTP
+- [Swagger](https://swagger.io/) - API documentation
 
-## env file
+## Structure
+Quick overview of the folder structure:
+```
+github/ - github CI actions
+dist/ - the build folder
+node_nodules/ - downloadrd 3rd part deps
+src/
+    accounts/ - example of an entity that has controller, module, service and references a DTO
+    services/ - external connectors e.g. DTOs and APIs
+    utils/ - common reusable components e.g. Nest validators and interceptors
+    app.module.ts - entry point to the Nest app that defines the dependency injections
+    interfacts.ts - global file of TS interfaces
+    mocks.ts - mocked external classes used in tests
+test/ - contains end to end tests
+```
 
-The .env file is placed at the root and has to be present for the app to work. Copy/swap the sibling _env.development_ file. Use:
+### Modules controllers and services
+This is a 3 tier API project\
+Controllers are the API entry point for HTTP requests. Modules manage input validation and output encoding, agnostic to the business logic. All business logic is handed off to the associated service
+Services contain all business logic
+Modules perform the dependency injection of all dependencies required
 
-> cp .env.development .env
+### DTOs and DAOS - TODO
+A specialised type of service that directly interfaces with an external data object e.g. a database or API\
+These services are typically mocked when performing unit tests
 
-## Running the app
-
-To run the (NestJS) API:
-
-> yarn  
-> yarn build  
-> yarn start:dev
-
-Then browse to `localhost:3000/swagger`
-
-## Testing the app
-
-To run the **unit** tests:
-
-> yarn test
-
-To run the end-to-end tests
-
-> yarn test:e2e
-
-## UAT
-
-Replace the values for each key in .env with the token name plus "\_TOKEN". Then make sure there is a Github secret for each of those keys. For example:
-
-> FIREBLOCKS_PRIVATE_KEY: FIREBLOCKS_PRIVATE_KEY_TOKEN
-
-## Endpoints
-
-### accounts
+### Sample Endpoints
+This project contains a single entity `accounts` for demo purposes.\
+All related files are stored under the `src/accounts` folder. Simply create copies of this folder for other entities you wish to create
 
 // Get all (vault) accounts
 GET accounts
@@ -47,18 +52,51 @@ GET accounts
 // Get a (vault) account
 GET accounts/:accountId
 
-## Installation
+### Sample external service
+This project contains a single external service `EventStore` for demo purposes and is found under `services/EventStore.service.ts`
 
-To install the solution on a new VM:
+## Standards
+- [Inversion of Control / Dependency Injection](https://martinfowler.com/articles/injection.html)
+- Unit and Integration/E2E testing
+- Swagger documentation via annotations
+- TODO
 
-```bash
-git clone git@github.com:ec-systems/consumer.custody.service.git
-cd consumer.custody.service
-./install.sh
-```
+## Commands
+More details in the scripts section of `./package.json`
 
-Notes: The VM uses the following SSH PubKey to clone the GitHub repo.
+### Installation
+Download and install all dependencies intothe `./node_modules` folder
+> yarn
 
-```text
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDA9qnx1qCKNgYTQNzLQD1HF7Skt6uK/qFBJxy1ngaEPD7x1Kq3UqbEvCV8Tvodo5NW5WiCyxyd+J6ypGIE57kkwvnM+z2kXcspfsdWfOZJLQ+7mcEyZQ9wkcBSRcdmGyJjjscJmAdRCyXycoZWSj3KAWQuJOV51uB5xJGJYZVFk5waRMTxFRyo3E/8wXnagWI7O+bEb9MEd01UcCnoRLCkTECOOH/+KfQzRlmbxIN4Kob6Y8UW93A4cs3kRLyQMOJCLcg0ep+K4UGpyFW1nlB+QC12qw96EBFKRSbdSejjXgus9UCIjuVF+qPJXrJlJOOoHajY1qvOPCbEBhsc/N7XHUyKqQiUEfsR5L13M2kenSyOtXwoTw/VxUDhDyi1vxB6/RKmGTfYOLAdQs03LMSCFzQ8ASxwSslqspxpv6FDzV+DT+7CIXTmJV6BOVo05BSeJEE6wk8bc9w74S1szgAuLjani7IWIjhcoLb8SIxo0NNxUSX9Rk9o+OT886lBfHM=
-```
+Build the project and output into the `./dist` folder
+> yarn build  
+
+### Linting and formatting
+Make sure all line and tab formatting is correct
+> yarn format
+
+Review some basic coding styles based on the rules set
+> yarn lint
+
+### Running the app
+An .env file needs to be placed at the root for the app to work. Copy/swap the sibling _env.development_ file. Use:
+> cp .env.development .env
+
+To run the (NestJS) API:
+> yarn start:dev
+
+Then browse to `localhost:3000/swagger`
+
+## Testing the app
+To run the **unit** tests:
+> yarn test
+
+To run the **end-to-end** tests:
+> yarn test:e2e
+
+## Deployment
+Options available on the [dev-ops repo](https://github.com/dltxio/dev-ops)
+
+### UAT
+Replace the values for each key in .env with the token name plus "\_TOKEN". Then make sure there is a Github secret for each of those keys. For example:
+> ENV_VAR_1_KEY: ENV_VAR_1_KEY_TOKEN
