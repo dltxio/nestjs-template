@@ -27,7 +27,7 @@ describe("AccountService", () => {
     });
 
     describe("Creating a vault account", () => {
-        it("should call the Fireblocks createVaultAccount method", async () => {
+        it("should call the createVaultAccount method", async () => {
             const accountName = "myAccount";
             jest.spyOn(fbSvc, "append").mockResolvedValue();
             await service.getById(accountName);
