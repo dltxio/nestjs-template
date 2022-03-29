@@ -34,8 +34,7 @@ test/ - contains end to end tests
 
 ### Modules controllers and services
 This is a 3 tier API project\
-Controllers are the API entry point for HTTP requests. Modules manage input validation and output encoding, agnostic to the business logic. All business logic is handed off to the associated service
-Services contain all business logic
+Controllers are the API endpoints for HTTP requests. They manage input validation and output encoding, agnostic to the business logic. All business logic is handed off to the associated service\
 Modules perform the dependency injection of all dependencies required
 
 ### DTOs and DAOS - TODO
