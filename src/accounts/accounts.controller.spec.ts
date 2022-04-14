@@ -4,6 +4,7 @@ import { ExampleService } from "../services/Example.service";
 import { AccountsController } from "./accounts.controller";
 import { AccountsModule } from "./accounts.module";
 import { AccountsService } from "./accounts.service";
+import { expect } from "chai";
 
 describe("AccountsController", () => {
     let controller: AccountsController;
@@ -33,6 +34,6 @@ describe("AccountsController", () => {
     });
 
     it("should be defined", () => {
-        expect(controller).toBeDefined();
+        expect(controller).to.be.not.undefined;
     });
 });

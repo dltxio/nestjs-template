@@ -2,7 +2,7 @@ import * as request from "supertest";
 import { Test } from "@nestjs/testing";
 import { AccountsModule } from "../src/accounts/accounts.module";
 import { INestApplication } from "@nestjs/common";
-import { EventStoreService } from "../src/services/EventStore.service";
+import { ExampleService } from "../src/services/EventStore.service";
 import { ConfigModule } from "@nestjs/config";
 
 jest.setTimeout(90000);
@@ -19,10 +19,10 @@ describe("Accounts", () => {
                 })
             ],
             providers: [
-                EventStoreService,
+                ExampleService,
                 {
-                    provide: "IEventStoreService",
-                    useClass: EventStoreService
+                    provide: "IExampleService",
+                    useClass: ExampleService
                 }
             ]
         }).compile();
