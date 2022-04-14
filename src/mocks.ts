@@ -1,6 +1,6 @@
-import { IEvent, IEventStoreService } from "./interfaces";
+import { IEvent, IExampleService } from "./interfaces";
 
-export class MockEventStoreService implements IEventStoreService {
+export class MockExampleService implements IExampleService {
     public getById(id: string): string {
         return "mock" + id;
     }

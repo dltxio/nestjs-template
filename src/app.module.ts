@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import { EventStoreService } from "./services/EventStore.service";
+import { ExampleService } from "./services/Example.service";
 import { AccountsModule } from "./accounts/accounts.module";
 
 @Module({
@@ -10,6 +10,6 @@ import { AccountsModule } from "./accounts/accounts.module";
             isGlobal: true
         })
     ],
-    providers: [EventStoreService]
+    providers: [ExampleService]
 })
 export class AppModule {}

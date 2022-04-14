@@ -1,6 +1,6 @@
 import { ConfigModule } from "@nestjs/config";
 import { Test, TestingModule } from "@nestjs/testing";
-import { EventStoreService } from "../services/EventStore.service";
+import { ExampleService } from "../services/Example.service";
 import { AccountsController } from "./accounts.controller";
 import { AccountsModule } from "./accounts.module";
 import { AccountsService } from "./accounts.service";
@@ -23,8 +23,8 @@ describe("AccountsController", () => {
                     useClass: AccountsService
                 },
                 {
-                    provide: "IEventStoreService",
-                    useClass: EventStoreService
+                    provide: "IExampleService",
+                    useClass: ExampleService
                 }
             ]
         }).compile();

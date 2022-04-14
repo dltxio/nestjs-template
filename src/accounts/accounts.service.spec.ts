@@ -1,12 +1,11 @@
 import { ConfigModule } from "@nestjs/config";
 import { Test, TestingModule } from "@nestjs/testing";
-import { EventStoreService } from "../services/EventStore.service";
-import { IEventStoreService } from "../interfaces";
+import { ExampleService } from "../services/Example.service";
+import { IExampleService } from "../interfaces";
 import { AccountsService } from "./accounts.service";
 
 describe("AccountService", () => {
     let service: AccountsService;
-    let eventStore: IEventStoreService;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
@@ -17,16 +16,16 @@ describe("AccountService", () => {
             ],
             providers: [
                 AccountsService,
-                EventStoreService,
+                ExampleService,
                 {
-                    provide: "IEventStoreService",
-                    useClass: EventStoreService
+                    provide: "IExampleService",
+                    useClass: ExampleService
                 }
             ]
         }).compile();
 
         service = module.get<AccountsService>(AccountsService);
-        service.eventStore = module.get<IEventStoreService>(EventStoreService);;
+        service.eventStore = module.get<IExampleService>(ExampleService);
     });
 
     it("should be defined", () => {

@@ -18,7 +18,10 @@ import { catchError, Observable } from "rxjs";
 
 @Injectable()
 export class GenericInterceptor implements NestInterceptor {
-    intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    intercept(
+        context: ExecutionContext,
+        next: CallHandler
+    ): Observable<unknown> {
         // next.handle() is an Observable of the controller's result value
         return next.handle().pipe(
             catchError(err => {

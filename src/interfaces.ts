@@ -44,13 +44,13 @@ export interface IAccountsService {
     createAssetWallet(accountId, assetId): Promise<IdResponse>;
 }
 
-export interface IEventStoreService {
+export interface IExampleService {
     getById(id: string): string;
     getAll(): string[];
 }
 
 export interface IEventStoreEvent {
-    data: any;
+    data: unknown;
     type: string;
     revision: bigint;
     streamName: string;
@@ -58,8 +58,8 @@ export interface IEventStoreEvent {
 }
 
 export interface IEvent {
-    data: {};
-    metadata: {};
+    data: Record<string, unknown>;
+    metadata: Record<string, unknown>;
     type: string;
 }
 

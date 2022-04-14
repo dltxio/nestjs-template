@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { EventStoreService } from "../services/EventStore.service";
+import { ExampleService } from "../services/Example.service";
 import { AccountsController } from "./accounts.controller";
 import { AccountsService } from "./accounts.service";
 
@@ -11,8 +11,8 @@ import { AccountsService } from "./accounts.service";
             useClass: AccountsService
         },
         {
-            provide: "IEventStoreService",
-            useClass: EventStoreService
+            provide: "IExampleService",
+            useClass: ExampleService
         }
     ]
 })
