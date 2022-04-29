@@ -1,20 +1,29 @@
-name: Build API
-
+name: Build/Test
 on:
-    pull_request:
-        branches:
-            - master # Master for now until we have development branch
-
+  pull_request:
+    branches:
+      - "*"
 jobs:
-    build:
-        timeout-minutes: 10
-        runs-on: ubuntu-latest
-        permissions:
-            contents: read
-            packages: write
-
-        steps:
-            - name: Checkout Branch
-              uses: actions/checkout@v2
-            - name: Build Project
-              uses: ./.github/actions
+  build:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      - name: Build Project
+        uses: ./.github/actions
+  test-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run unit tests
+        run: |
+          yarn install
+          yarn test
+      - name: Post coverage report
+        uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
