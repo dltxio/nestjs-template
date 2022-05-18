@@ -13,12 +13,12 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-      - name: Read package.json node version
-        uses: culshaw/read-package-node-version-actions@v2.0.0
+      - name: Read package.json node and npm engines version
+        uses: skjnldsv/read-package-engines-version-actions@v1.2
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.2.0
         with:
-          node-version: ${{ steps.package-node-version.outputs.version }}
+          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
       - name: Install Dependencies
         run: yarn install
         shell: bash
