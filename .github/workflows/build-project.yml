@@ -7,9 +7,6 @@ jobs:
   build-and-test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
