@@ -4,7 +4,7 @@ on:
     branches:
       - "*"
 jobs:
-  build:
+  build-and-test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
@@ -12,17 +12,22 @@ jobs:
       packages: write
     steps:
       - name: Checkout Branch
-        uses: actions/checkout@v2
-      - name: Build Project
-        uses: ./.github/actions
-  test-coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: yarn
+        shell: bash
+      - name: Read package.json node version
+        uses: culshaw/read-package-node-version-actions@v2.0.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.2.0
+        with:
+          node-version: ${{ steps.package-node-version.outputs.version }}
+      - name: Build App 
+        run: yarn build
+        shell: bash
       - name: Run unit tests
-        run: |
-          yarn install
-          yarn test
+        run: yarn test
+        shell: bash
       - name: Post coverage report
         uses: romeovs/lcov-reporter-action@v0.2.16
         with:
