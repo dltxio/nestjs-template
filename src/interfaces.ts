@@ -1,6 +1,7 @@
 import { IsNotEmpty } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 import { IdResponse } from "./utils";
+import { User } from "./data/entities/user.entity";
 
 export enum EcAssetType {
     BASE_ASSET = "BASE_ASSET",
@@ -47,6 +48,10 @@ export interface IAccountsService {
 export interface IExampleService {
     getById(id: string): string;
     getAll(): string[];
+}
+
+export interface IUserService {
+    findAll(): Promise<User[]>;
 }
 
 export interface IEventStoreEvent {

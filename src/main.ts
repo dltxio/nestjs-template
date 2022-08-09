@@ -7,7 +7,7 @@ import tracer from "dd-trace";
 
 async function bootstrap() {
     tracer.init();
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule, { cors: true });
     app.useGlobalPipes(
         new ValidationPipe({
             whitelist: true
@@ -16,8 +16,8 @@ async function bootstrap() {
     app.useGlobalInterceptors(new GenericInterceptor());
 
     const options = new DocumentBuilder()
-        .setTitle("EasyCrypto Custody Service")
-        .setDescription("Manage asset balances")
+        .setTitle("Nest Backend Service")
+        .setDescription("Nest Backend Template")
         .setVersion("1.0")
         .build();
     const document = SwaggerModule.createDocument(app, options);
