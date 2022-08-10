@@ -22,13 +22,14 @@
         "test": "nyc --reporter=lcov mocha",
         "test:coverage": "nyc mocha",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/mocha --runInBand",
-        "test:e2e": "mocha --config ./test/jest-e2e.json"
+        "test:e2e": "mocha --config ./test/.mocharc.json"
     },
     "dependencies": {
         "@nestjs/common": "^8.0.0",
         "@nestjs/core": "^8.0.0",
         "@nestjs/platform-express": "^8.0.0",
         "@nestjs/swagger": "^5.2.0",
+        "@nestjs/typeorm": "^9.0.0",
         "@types/chai": "^4.3.1",
         "@types/sinon": "^10.0.11",
         "chai": "^4.3.6",
