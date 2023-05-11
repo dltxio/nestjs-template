@@ -27,8 +27,10 @@ async function bootstrap() {
 
     await app.listen(3000);
 }
-bootstrap().then(() => {
-    logger.log("Ready");
-}).catch((err) => {
-    logger.error(err);
-});
+bootstrap()
+    .then(() => {
+        logger.log("Ready");
+    })
+    .catch(err => {
+        logger.error(err);
+    });

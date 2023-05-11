@@ -4,7 +4,6 @@ import { Repository } from "typeorm";
 import { IUserService } from "./user.types";
 import { ProviderTokens } from "../tokens";
 
-
 @Injectable()
 export class UserService implements IUserService {
     private readonly logger = new Logger("UserService");

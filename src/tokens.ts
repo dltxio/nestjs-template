@@ -6,4 +6,3 @@ export enum ProviderTokens {
     UserMongo = "UserMongo",
     UserPostgres = "UserPostgres"
 }
-

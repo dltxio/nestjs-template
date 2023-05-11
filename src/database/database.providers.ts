@@ -1,6 +1,5 @@
-
 import { ProviderTokens } from "../tokens";
-import { DataSource, DataSourceOptions } from "typeorm";
+import { DataSource } from "typeorm";
 
 export const databaseProviders = [
     {

@@ -9,4 +9,3 @@ export class MockExampleService implements IExampleService {
         return ["mock1", "mock2", "mock3"];
     }
 }
-

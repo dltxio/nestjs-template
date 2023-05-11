@@ -6,7 +6,9 @@ import { ProviderTokens } from "../tokens";
 
 @Controller("user")
 export class UserController {
-    constructor(@Inject(ProviderTokens.UserService) private userService: IUserService) {}
+    constructor(
+        @Inject(ProviderTokens.UserService) private userService: IUserService
+    ) {}
 
     @Get()
     @ApiOperation({ summary: "Get users" })

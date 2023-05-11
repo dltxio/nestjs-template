@@ -8,7 +8,7 @@ import { UserModule } from "./user/user.module";
         ConfigModule.forRoot({
             isGlobal: true
         }),
-        UserModule,
+        UserModule
     ],
     providers: [ExampleService]
 })

@@ -1,4 +1,3 @@
-
 // String values used in user-facing error messages
 export enum EntityNames {
     User = "User"
