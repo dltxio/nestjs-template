@@ -1,8 +1,9 @@
+import { ProviderTokens } from "../tokens";
 import { DataSource } from "typeorm";
 
 export const databaseProviders = [
     {
-        provide: "DATA_SOURCE",
+        provide: ProviderTokens.PostgresDataSource,
         useFactory: async () => {
             const dataSource = new DataSource({
                 type: "postgres",

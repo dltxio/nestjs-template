@@ -1,8 +1,9 @@
 import { userProviders } from "./user.providers";
 import { Module } from "@nestjs/common";
-import { DatabaseModule } from "../data/database.module";
+import { DatabaseModule } from "../database/database.module";
 import { UserService } from "./user.service";
 import { UserController } from "./user.controller";
+import { ProviderTokens } from "../tokens";
 
 @Module({
     imports: [DatabaseModule],
@@ -10,7 +11,7 @@ import { UserController } from "./user.controller";
     providers: [
         ...userProviders,
         {
-            provide: "IUserService",
+            provide: ProviderTokens.UserService,
             useClass: UserService
         }
     ]

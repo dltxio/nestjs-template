@@ -2,10 +2,10 @@ import { UserModule } from "./user.module";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UserService } from "./user.service";
 import { expect } from "chai";
-import { DatabaseModule } from "../data/database.module";
+import { DatabaseModule } from "../database/database.module";
 import { userProviders } from "./user.providers";
 import { ConfigModule } from "@nestjs/config";
-import { IUserService } from "src/interfaces";
+import { IUserService } from "./user.types";
 
 describe("UserService", () => {
     let service: IUserService;

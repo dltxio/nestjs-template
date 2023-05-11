@@ -1,11 +1,14 @@
-import { User } from "./../data/entities/user.entity";
+import { User } from "../database/entities/user.entity";
 import { Controller, Get, HttpStatus, Inject } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
-import { IUserService } from "../interfaces";
+import { IUserService } from "./user.types";
+import { ProviderTokens } from "../tokens";
 
 @Controller("user")
 export class UserController {
-    constructor(@Inject("IUserService") private userService: IUserService) {}
+    constructor(
+        @Inject(ProviderTokens.UserService) private userService: IUserService
+    ) {}
 
     @Get()
     @ApiOperation({ summary: "Get users" })

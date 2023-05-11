@@ -1,13 +1,14 @@
 import { Inject, Injectable, Logger } from "@nestjs/common";
-import { User } from "../data/entities/user.entity";
+import { User } from "../database/entities/user.entity";
 import { Repository } from "typeorm";
-import { IUserService } from "../interfaces";
+import { IUserService } from "./user.types";
+import { ProviderTokens } from "../tokens";
 
 @Injectable()
 export class UserService implements IUserService {
     private readonly logger = new Logger("UserService");
     constructor(
-        @Inject("USER_REPOSITORY")
+        @Inject(ProviderTokens.UserPostgres)
         private userRepository: Repository<User>
     ) {}
 

@@ -6,19 +6,19 @@ import {
     CreateDateColumn
 } from "typeorm";
 
-@Entity("users")
+@Entity("example.users")
 export class User {
     @PrimaryGeneratedColumn("uuid")
-    userId: string;
+    id: string;
 
-    @Column({ unique: true })
+    @Column()
     email: string;
 
-    @Column({ type: "timestamptz" })
+    @Column()
     @CreateDateColumn()
     createdAt: Date;
 
-    @Column({ type: "timestamptz" })
+    @Column()
     @UpdateDateColumn()
     updatedAt: Date;
 }
