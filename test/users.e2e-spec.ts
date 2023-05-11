@@ -2,6 +2,7 @@ import { Test } from "@nestjs/testing";
 import { UserModule } from "../src/user/user.module";
 import { INestApplication } from "@nestjs/common";
 import supertest from "supertest";
+import { ConfigModule } from "@nestjs/config";
 const request = supertest;
 
 describe("User", () => {
@@ -9,7 +10,12 @@ describe("User", () => {
 
     beforeEach(async () => {
         const module = await Test.createTestingModule({
-            imports: [UserModule]
+            imports: [
+                ConfigModule.forRoot({
+                    isGlobal: true
+                }),
+                UserModule
+            ]
         }).compile();
         app = module.createNestApplication();
         await app.init();
