@@ -2,7 +2,6 @@ import { ConfigModule } from "@nestjs/config";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UserController } from "./user.controller";
 import { UserModule } from "./user.module";
-import { expect } from "chai";
 import { DatabaseModule } from "../database/database.module";
 import { userProviders } from "./user.providers";
 
@@ -25,11 +24,11 @@ describe("UserController", () => {
     });
 
     it("should be defined", () => {
-        expect(controller).to.be.not.undefined;
+        expect(controller).toBeDefined();
     });
 
     it("should return an array of users", async () => {
         const users = await controller.getAll();
-        expect(users).to.be.an("array");
+        expect(users).toBeInstanceOf(Array);
     });
 });
