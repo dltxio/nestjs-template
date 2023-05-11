@@ -29,6 +29,6 @@ describe("UserController", () => {
 
     it("should return an array of users", async () => {
         const users = await controller.getAll();
-        expect(users).toBeInstanceOf(Array);//to.be.an("array");
+        expect(users).toBeInstanceOf(Array);
     });
 });

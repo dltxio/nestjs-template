@@ -4,7 +4,7 @@ import { ProviderTokens } from "../tokens";
 
 export const userProviders = [
     {
-        provide: ProviderTokens.UserPostgres,
+        provide: ProviderTokens.UserServicePostgres,
         useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
         inject: [ProviderTokens.PostgresDataSource]
     }

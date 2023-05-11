@@ -8,7 +8,7 @@ import { ProviderTokens } from "../tokens";
 export class UserService implements IUserService {
     private readonly logger = new Logger("UserService");
     constructor(
-        @Inject(ProviderTokens.UserPostgres)
+        @Inject(ProviderTokens.UserServicePostgres)
         private userRepository: Repository<User>
     ) {}
 
