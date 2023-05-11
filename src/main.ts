@@ -1,10 +1,11 @@
-import { ValidationPipe } from "@nestjs/common";
+import { Logger, ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import { GenericInterceptor } from "./utils/interceptors";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import tracer from "dd-trace";
 
+const logger = new Logger("API");
 async function bootstrap() {
     tracer.init();
     const app = await NestFactory.create(AppModule, { cors: true });
@@ -26,4 +27,8 @@ async function bootstrap() {
 
     await app.listen(3000);
 }
-bootstrap();
+bootstrap().then(() => {
+    logger.log("Ready");
+}).catch((err) => {
+    logger.error(err);
+});
