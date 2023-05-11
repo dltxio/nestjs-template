@@ -1,6 +1,5 @@
 import { validate, Validate, ValidationError } from "class-validator";
 import { IsUnsignedBigNumberString } from "./constraints";
-import { expect } from "chai";
 
 class TestCustomConstraints {
     @Validate(IsUnsignedBigNumberString)
@@ -17,10 +16,9 @@ describe("Custom constraints", () => {
     ["cheese", "12.6", "-12", "", null, undefined].forEach(value => {
         it(`should fail invalid value ${value}`, async () => {
             const result = await validateValue(value);
-            expect(result.length).to.equal(1);
+            expect(result.length).toEqual(1);
             expect(result[0].constraints !== undefined);
-            expect(result[0].constraints?.isUnsignedBigNumberString).to.be.not
-                .undefined;
+            expect(result[0].constraints?.isUnsignedBigNumberString).toBeDefined()
         });
     });
 
@@ -28,7 +26,7 @@ describe("Custom constraints", () => {
         value => {
             it(`should pass valid value ${value}`, async () => {
                 const result = await validateValue(value);
-                expect(result.length).to.equal(0);
+                expect(result.length).toEqual(0);
             });
         }
     );

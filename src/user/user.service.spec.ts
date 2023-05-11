@@ -1,7 +1,6 @@
 import { UserModule } from "./user.module";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UserService } from "./user.service";
-import { expect } from "chai";
 import { DatabaseModule } from "../database/database.module";
 import { userProviders } from "./user.providers";
 import { ConfigModule } from "@nestjs/config";
@@ -26,11 +25,11 @@ describe("UserService", () => {
     });
 
     it("should be defined", () => {
-        expect(service).to.be.not.undefined;
+        expect(service).toBeDefined()
     });
 
     it("should return an array of users", async () => {
         const users = await service.findAll();
-        expect(users).to.be.an("array");
+        expect(users).toBeInstanceOf(Array);
     });
 });
