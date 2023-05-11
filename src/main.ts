@@ -16,8 +16,8 @@ async function bootstrap() {
     app.useGlobalInterceptors(new GenericInterceptor());
 
     const options = new DocumentBuilder()
-        .setTitle("Nest Backend Service")
-        .setDescription("Nest Backend Template")
+        .setTitle("DLTx API")
+        .setDescription("DLTx NestJS Web Service API")
         .setVersion("1.0")
         .build();
     const document = SwaggerModule.createDocument(app, options);

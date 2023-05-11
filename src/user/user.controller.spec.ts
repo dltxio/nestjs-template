@@ -3,7 +3,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { UserController } from "./user.controller";
 import { UserModule } from "./user.module";
 import { expect } from "chai";
-import { DatabaseModule } from "../data/database.module";
+import { DatabaseModule } from "../database/database.module";
 import { userProviders } from "./user.providers";
 
 describe("UserController", () => {

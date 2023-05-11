@@ -1,10 +1,11 @@
 import { DataSource } from "typeorm";
-import { User } from "../data/entities/user.entity";
+import { User } from "../database/entities/user.entity";
+import { ProviderTokens } from "../tokens";
 
 export const userProviders = [
     {
-        provide: "USER_REPOSITORY",
+        provide: ProviderTokens.UserPostgres,
         useFactory: (dataSource: DataSource) => dataSource.getRepository(User),
-        inject: ["DATA_SOURCE"]
+        inject: [ProviderTokens.PostgresDataSource]
     }
 ];

@@ -1,7 +1,6 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
-import { ExampleService } from "./services/Example.service";
-import { AccountsModule } from "./accounts/accounts.module";
+import { ExampleService } from "./services/example.service";
 import { UserModule } from "./user/user.module";
 
 @Module({
@@ -9,8 +8,7 @@ import { UserModule } from "./user/user.module";
         ConfigModule.forRoot({
             isGlobal: true
         }),
-        AccountsModule,
-        UserModule
+        UserModule,
     ],
     providers: [ExampleService]
 })

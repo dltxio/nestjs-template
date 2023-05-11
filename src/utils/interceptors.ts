@@ -13,7 +13,7 @@ import {
     EntityCannotCreateError,
     EntityCannotUpdateError,
     EntityMissingIdError
-} from "../interfaces";
+} from "../errors";
 import { catchError, Observable } from "rxjs";
 
 @Injectable()

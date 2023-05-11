@@ -23,11 +23,11 @@ github/ - github CI actions
 dist/ - the build folder
 node_nodules/ - downloadrd 3rd part deps
 src/
-    accounts/ - example of an entity that has controller, module, service and references a DTO
+    users/ - example of an entity that has controller, module, service and references a DTO
     services/ - external connectors e.g. DTOs and APIs
     utils/ - common reusable components e.g. Nest validators and interceptors
     app.module.ts - entry point to the Nest app that defines the dependency injections
-    interfacts.ts - global file of TS interfaces
+    tokens.ts - global file of token strings to reference injectable services
     main.ts - nest setup including swagger config
     mocks.ts - mocked external classes used in tests
 test/ - contains end to end tests
@@ -38,29 +38,22 @@ This is a 3 tier API project\
 Controllers are the API endpoints for HTTP requests. They manage input validation and output encoding, agnostic to the business logic. All business logic is handed off to the associated service\
 Modules perform the dependency injection of all dependencies required
 
-### DTOs and DAOS - TODO
-A specialised type of service that directly interfaces with an external data object e.g. a database or API\
-These services are typically mocked when performing unit tests
-
 ### Sample Endpoints
-This project contains a single entity `accounts` for demo purposes.\
-All related files are stored under the `src/accounts` folder. Simply create copies of this folder for other entities you wish to create
+This project contains a single entity `user` for demo purposes.\
+All related files are stored under the `src/user` folder. Simply create copies of this folder for other entities you wish to create
 
-// Get all (vault) accounts
-> GET accounts
+GET http://localhost:3000/users HTTP/1.1
 
-// Get a (vault) account
-> GET accounts/:accountId
 
 ### Sample external service
-This project contains a single external service `EventStore` for demo purposes and is found under `services/EventStore.service.ts`
+This project contains a single external service `ExampleService` for demo purposes and is found under `services/example.service.ts`
 
 ## Standards
 - [Service Oriented Architecture (SoA)](https://www.geeksforgeeks.org/service-oriented-architecture/)
 - [Inversion of Control / Dependency Injection](https://martinfowler.com/articles/injection.html)
 - Unit and Integration/E2E testing
 - Swagger documentation via annotations
-- TODO
+
 
 ### Dependency Management
 - Dependencies vs dev-dependencies - if it's not used at run-time then add as a dev-dependency

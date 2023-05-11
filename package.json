@@ -6,7 +6,7 @@
     "private": true,
     "license": "MIT",
     "engines": {
-        "node": "16.14.2"
+        "node": "16.19.0"
     },
     "scripts": {
         "prebuild": "rimraf dist",
@@ -18,7 +18,7 @@
         "start:dev": "nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
-        "prepare": "cp ./.env.development ./.env && husky install",
+        "prepare": "husky install",
         "test": "nyc --reporter=lcov mocha",
         "test:coverage": "nyc mocha",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/mocha --runInBand",
@@ -38,6 +38,7 @@
         "dd-trace": "^2.3.0",
         "ethers": "^5.5.4",
         "lint-staged": "^12.3.7",
+        "mongodb": "^5.4.0",
         "nyc": "^15.1.0",
         "pg": "^8.7.3",
         "reflect-metadata": "^0.1.13",
