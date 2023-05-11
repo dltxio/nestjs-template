@@ -3,7 +3,7 @@ import { ConfigService } from "@nestjs/config";
 import { IExampleService } from "./example.types";
 
 /* 
-    This is a service that is not associated with a controller or module.
+    This is a service that is not associated with a controller or module. 
 */
 
 const ExampleSettingKeys = {
